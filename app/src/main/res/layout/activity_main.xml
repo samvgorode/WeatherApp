@@ -7,17 +7,17 @@
     tools:context=".presentation.MainActivity">
 
     <ImageView
-        android:importantForAccessibility="no"
         android:id="@+id/logo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="64dp"
+        android:importantForAccessibility="no"
         android:src="@drawable/ic_logo_main"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/input"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="64dp"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/input"
@@ -25,30 +25,48 @@
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
         android:layout_marginEnd="2dp"
-        android:inputType="textAutoComplete"
         android:background="@drawable/rectangle_round_start"
+        android:hint="@string/enter_city_name"
         android:importantForAutofill="no"
+        android:inputType="textAutoComplete"
         android:paddingHorizontal="8dp"
-        android:hint="@string/enter_city_name"/>
+        android:textColor="@color/btn_txt_green"
+        android:textColorHint="@color/btn_txt_green"
+        app:layout_constraintBottom_toTopOf="@+id/history"
+        app:layout_constraintEnd_toStartOf="@+id/search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/search"
-        android:layout_width="wrap_content"
+        android:layout_width="56dp"
         android:layout_height="48dp"
-        app:layout_constraintTop_toTopOf="@+id/input"
-        app:layout_constraintTop_toBottomOf="@+id/input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/input"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_arrow_transparent"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/rectangle_round_end"/>
+        android:background="@drawable/rectangle_round_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/input"
+        app:layout_constraintTop_toBottomOf="@+id/input"
+        app:layout_constraintTop_toTopOf="@+id/input" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/history"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rectangle_round_transparent"
+        android:paddingHorizontal="48dp"
+        android:text="@string/view_history"
+        android:textColor="@color/btn_txt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input"
+        app:layout_constraintVertical_chainStyle="packed" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
