@@ -1,72 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="64dp"
-        android:importantForAccessibility="no"
-        android:src="@drawable/ic_logo_main"
-        app:layout_constraintBottom_toTopOf="@+id/input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+    <data>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/input"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="2dp"
-        android:background="@drawable/rectangle_round_start"
-        android:hint="@string/enter_city_name"
-        android:importantForAutofill="no"
-        android:inputType="textAutoComplete"
-        android:paddingHorizontal="8dp"
-        android:textColor="@color/btn_txt_green"
-        android:textColorHint="@color/btn_txt_green"
-        app:layout_constraintBottom_toTopOf="@+id/history"
-        app:layout_constraintEnd_toStartOf="@+id/search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <variable
+            name="viewModel"
+            type="com.samvgorode.weatherapp.presentation.MainViewModel" />
+    </data>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/search"
-        android:layout_width="56dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rectangle_round_end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/input"
-        app:layout_constraintTop_toBottomOf="@+id/input"
-        app:layout_constraintTop_toTopOf="@+id/input" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/history"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rectangle_round_transparent"
-        android:paddingHorizontal="48dp"
-        android:text="@string/view_history"
-        android:textColor="@color/btn_txt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="64dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_logo_main"
+            app:layout_constraintBottom_toTopOf="@+id/input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/input"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/rectangle_round_start"
+            android:hint="@string/enter_city_name"
+            android:importantForAutofill="no"
+            android:inputType="textAutoComplete"
+            android:paddingHorizontal="8dp"
+            android:text="@={viewModel.input}"
+            android:textColor="@color/btn_txt_green"
+            android:textColorHint="@color/btn_txt_green"
+            app:layout_constraintBottom_toTopOf="@+id/history"
+            app:layout_constraintEnd_toStartOf="@+id/search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search"
+            android:layout_width="56dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rectangle_round_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/input"
+            app:layout_constraintTop_toBottomOf="@+id/input"
+            app:layout_constraintTop_toTopOf="@+id/input"
+            android:onClick="@{_ -> viewModel.search()}"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rectangle_round_transparent"
+            android:paddingHorizontal="48dp"
+            android:text="@string/view_history"
+            android:textColor="@color/btn_txt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
