@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.samvgorode.weatherapp.presentation.MainViewModel" />
@@ -55,28 +57,41 @@
             android:layout_marginStart="2dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/rectangle_round_end"
+            android:onClick="@{_ -> viewModel.search()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/input"
             app:layout_constraintTop_toBottomOf="@+id/input"
-            app:layout_constraintTop_toTopOf="@+id/input"
-            android:onClick="@{_ -> viewModel.search()}"/>
+            app:layout_constraintTop_toTopOf="@+id/input" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/history"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginStart="2dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/rectangle_round_transparent"
             android:paddingHorizontal="48dp"
             android:text="@string/view_history"
             android:textColor="@color/btn_txt"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/cityWidget"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input"
             app:layout_constraintVertical_chainStyle="packed" />
+
+        <include
+            android:id="@+id/cityWidget"
+            layout="@layout/weather_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:visibility="@{viewModel.showWeatherWidget ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/history"
+            app:viewModel="@{viewModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
