@@ -1,7 +1,6 @@
 package com.samvgorode.weatherapp.data
 
 import com.samvgorode.weatherapp.data.local.WeatherDao
-import com.samvgorode.weatherapp.data.local.WeatherDatabase
 import com.samvgorode.weatherapp.data.local.WeatherInCity
 import com.samvgorode.weatherapp.data.remote.ApiService
 import com.samvgorode.weatherapp.data.remote.WeatherResponse

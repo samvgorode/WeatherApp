@@ -15,7 +15,7 @@ import org.junit.Test
 class GetWeatherHistoryUseCaseTest {
 
     @Test
-    fun `invoke should return proper value`() = runTest{
+    fun `invoke should return proper value`() = runTest {
         val weatherFromDb = mockk<WeatherInCity>()
         val weatherUi = mockk<WeatherInCityUiModel>()
         val weatherHistory = listOf(weatherFromDb)
@@ -30,7 +30,7 @@ class GetWeatherHistoryUseCaseTest {
     }
 
     @Test
-    fun `invoke should return proper list size`() = runTest{
+    fun `invoke should return proper list size`() = runTest {
         val weatherHistory = listOf<WeatherInCity>(mockk(), mockk(), mockk())
         val weatherUIHistory = listOf<WeatherInCityUiModel>(mockk(), mockk(), mockk())
         val repository: WeatherRepository = TestStubs.getWeatherRepository(output1 = weatherHistory)
@@ -43,12 +43,12 @@ class GetWeatherHistoryUseCaseTest {
     }
 
     @Test
-    fun `invoke should throw error if repository fails`() = runTest{
+    fun `invoke should throw error if repository fails`() = runTest {
         val error = mockk<Throwable>()
         val repository: WeatherRepository = TestStubs.getWeatherRepositoryError(output = error)
         val mapper = TestStubs.getWeatherMapper()
         val useCase = GetWeatherHistoryUseCase(repository, mapper)
-        try{
+        try {
             useCase.invoke()
         } catch (e: Throwable) {
             assertEquals(e, error)

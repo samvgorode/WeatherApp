@@ -31,7 +31,6 @@ class MainViewModel @Inject constructor(
                 val city = getWeather(it)
                 showWeatherWidget.set(true)
                 weatherModel.set(city)
-                Log.d("", city.toString())
             }
         }
     }

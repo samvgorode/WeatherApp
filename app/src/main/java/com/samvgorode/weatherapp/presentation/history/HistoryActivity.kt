@@ -17,7 +17,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHistoryBinding.inflate(layoutInflater).apply {
             viewModel = this@HistoryActivity.viewModel
-            goBack = { super.onBackPressed() }
+            goBack = ::onBackPressed
             setContentView(root)
         }
     }

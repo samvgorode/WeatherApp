@@ -22,7 +22,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    
+
     private const val DB_NAME = "com.samvgorode.weatherapp.data.local.weather_database"
     private const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
     private const val NETWORK_TIMEOUT_SECONDS = 10L
@@ -60,8 +60,9 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideWeatherRepository(apiService: ApiService,
-                                 weatherDao: WeatherDao,
-                                 weatherMapper: WeatherDataMapper
+    fun provideWeatherRepository(
+        apiService: ApiService,
+        weatherDao: WeatherDao,
+        weatherMapper: WeatherDataMapper
     ): WeatherRepository = WeatherRepositoryImpl(apiService, weatherDao, weatherMapper)
 }

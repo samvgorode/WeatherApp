@@ -13,7 +13,7 @@ import org.junit.Test
 class HistoryViewModelTest : VmTest() {
 
     @Test
-    fun `vm should not create request on init and get response`() = runBlocking {
+    fun `vm should create request on init and get response`() = runBlocking {
         val output: List<WeatherInCityUiModel> = listOf()
         val useCase = getWeatherHistory(output)
         val vm = HistoryViewModel(useCase)
@@ -22,7 +22,7 @@ class HistoryViewModelTest : VmTest() {
     }
 
     @Test
-    fun `vm should not create request on init and throw error`() = runBlocking {
+    fun `vm should create request on init and throw error`() = runBlocking {
         val output: Throwable = mockk()
         val useCase = getWeatherHistory(error = output)
         try {

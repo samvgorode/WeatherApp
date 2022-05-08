@@ -21,10 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             viewModel = this@MainActivity.viewModel
-            openHistory = {
-                hideKeyboard()
-                startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
-            }
+            openHistory = ::startHistoryActivity
             setContentView(root)
         }
     }
@@ -33,5 +30,10 @@ class MainActivity : AppCompatActivity() {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+    private fun startHistoryActivity() {
+        hideKeyboard()
+        startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
     }
 }

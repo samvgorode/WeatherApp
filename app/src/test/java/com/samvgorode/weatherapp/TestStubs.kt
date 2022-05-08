@@ -23,8 +23,8 @@ object TestStubs {
         input: String = "",
         output: Throwable = mockk()
     ) = mockk<WeatherRepository> {
-        coEvery { getWeatherForCity(input) } throws  output
-        coEvery { getWeatherList() } throws  output
+        coEvery { getWeatherForCity(input) } throws output
+        coEvery { getWeatherList() } throws output
     }
 
     fun getWeatherMapper(

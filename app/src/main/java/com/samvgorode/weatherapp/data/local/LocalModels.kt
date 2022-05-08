@@ -16,7 +16,7 @@ data class WeatherInCity(
 
 @Dao
 interface WeatherDao {
-    @Query("SELECT * FROM weather LIMIT 5")
+    @Query("SELECT * FROM weather ORDER BY date DESC LIMIT 5 ")
     suspend fun getAll(): List<WeatherInCity>
 
     @Query("SELECT * FROM weather WHERE name LIKE :name LIMIT 1")

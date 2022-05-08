@@ -23,7 +23,7 @@ class MainViewModelTest : VmTest() {
     }
 
     @Test
-    fun `vm should not create request and get response if input is not empty`() = runBlocking {
+    fun `vm should create request and get response if input is not empty`() = runBlocking {
         val input = "Vilnius"
         val output: WeatherInCityUiModel = mockk()
         val useCase = getWeather(input = input, output = output)
@@ -35,7 +35,7 @@ class MainViewModelTest : VmTest() {
     }
 
     @Test
-    fun `vm should not create request and get error if input is not empty`() = runBlocking {
+    fun `vm should create request and get error if input is not empty`() = runBlocking {
         val input = "Vilnius"
         val output: Throwable = mockk()
         val useCase = getWeather(input = input, error = output)
