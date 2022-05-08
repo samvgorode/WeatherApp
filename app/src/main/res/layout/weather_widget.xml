@@ -6,15 +6,16 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.samvgorode.weatherapp.presentation.MainViewModel" />
+            name="weatherModel"
+            type="com.samvgorode.weatherapp.presentation.WeatherInCityUiModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rectangle_round_transparent"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginVertical="8dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/icon"
@@ -22,7 +23,7 @@
             android:layout_height="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srsCoil="@{viewModel.weatherModel.icon}"
+            app:srsCoil="@{weatherModel.icon}"
             tools:src="@drawable/ic_cloud"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -36,7 +37,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintHorizontal_bias="0"
             tools:text="Broken clouds"
-            android:text="@{viewModel.weatherModel.description}"/>
+            android:text="@{weatherModel.description}"/>
 
         <TextView
             android:id="@+id/temperature"
@@ -48,8 +49,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
-            tools:text="14 \u00B0"
-            android:text="@{viewModel.weatherModel.temperature}"/>
+            tools:text="14\u00B0"
+            android:text="@{weatherModel.temperature}"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/cityName"
@@ -62,7 +63,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintHorizontal_bias="0"
             tools:text="Oslo"
-            android:text="@{viewModel.weatherModel.name}"
+            android:text="@{weatherModel.name}"
             android:textSize="24sp"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -76,7 +77,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintHorizontal_bias="1"
             tools:text="SAT \n 01"
-            android:text="@{viewModel.weatherModel.date}"
+            android:text="@{weatherModel.date}"
             android:textAlignment="center"
             android:gravity="center"
             android:textSize="24sp"/>

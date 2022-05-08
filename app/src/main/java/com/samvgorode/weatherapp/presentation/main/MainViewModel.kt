@@ -1,11 +1,12 @@
-package com.samvgorode.weatherapp.presentation
+package com.samvgorode.weatherapp.presentation.main
 
 import android.util.Log
 import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.ViewModel
 import androidx.databinding.ObservableField
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samvgorode.weatherapp.domain.GetWeatherUseCase
+import com.samvgorode.weatherapp.presentation.WeatherInCityUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -14,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getWeather: GetWeatherUseCase
-    ): ViewModel() {
+) : ViewModel() {
 
     val input = ObservableField<String>()
     val weatherModel = ObservableField<WeatherInCityUiModel>()

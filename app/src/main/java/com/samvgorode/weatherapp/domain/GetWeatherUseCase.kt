@@ -5,7 +5,8 @@ import javax.inject.Inject
 
 class GetWeatherUseCase @Inject constructor(
     private val weatherRepository: WeatherRepository,
-    private val weatherMapper: WeatherDomainMapper) {
+    private val weatherMapper: WeatherDomainMapper
+) {
 
     suspend operator fun invoke(query: String): WeatherInCityUiModel {
         val dbCity = weatherRepository.getWeatherForCity(query)

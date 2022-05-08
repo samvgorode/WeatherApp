@@ -8,13 +8,17 @@
 
         <variable
             name="viewModel"
-            type="com.samvgorode.weatherapp.presentation.MainViewModel" />
+            type="com.samvgorode.weatherapp.presentation.main.MainViewModel" />
+
+        <variable
+            name="openHistory"
+            type="kotlin.jvm.functions.Function0" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.MainActivity">
+        tools:context=".presentation.main.MainActivity">
 
         <ImageView
             android:id="@+id/logo"
@@ -77,7 +81,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            android:onClick="@{_ -> openHistory.invoke() }"/>
 
         <include
             android:id="@+id/cityWidget"
@@ -91,7 +96,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/history"
-            app:viewModel="@{viewModel}" />
+            app:weatherModel="@{viewModel.weatherModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

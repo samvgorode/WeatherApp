@@ -13,7 +13,7 @@ class WeatherDomainMapper @Inject constructor() {
         val dateFormat = SimpleDateFormat("E\n dd", Locale.getDefault())
         val date = Date(cityWeather1.date ?: 0L)
         val dateStr = dateFormat.format(date)
-        val celsiusSign = " \u00B0"
+        val celsiusSign = "\u00B0"
         return WeatherInCityUiModel(
             id = cityWeather1.id,
             name = cityWeather1.name.orEmpty(),
