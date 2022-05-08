@@ -10,6 +10,6 @@ class GetWeatherUseCase @Inject constructor(
 
     suspend operator fun invoke(query: String): WeatherInCityUiModel {
         val dbCity = weatherRepository.getWeatherForCity(query)
-        return weatherMapper.mapTiUiModel(dbCity)
+        return weatherMapper.mapToUiModel(dbCity)
     }
 }

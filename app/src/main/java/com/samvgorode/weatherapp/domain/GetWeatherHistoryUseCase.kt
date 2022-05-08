@@ -10,6 +10,6 @@ class GetWeatherHistoryUseCase @Inject constructor(
 
     suspend operator fun invoke(): List<WeatherInCityUiModel> {
         val dbCities = weatherRepository.getWeatherList()
-        return dbCities.map(weatherMapper::mapTiUiModel)
+        return dbCities.map(weatherMapper::mapToUiModel)
     }
 }

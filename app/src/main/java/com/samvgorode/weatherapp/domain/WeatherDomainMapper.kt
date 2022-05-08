@@ -1,5 +1,6 @@
 package com.samvgorode.weatherapp.domain
 
+import androidx.annotation.VisibleForTesting
 import com.samvgorode.weatherapp.data.local.WeatherInCity
 import com.samvgorode.weatherapp.presentation.WeatherInCityUiModel
 import java.text.SimpleDateFormat
@@ -8,21 +9,28 @@ import javax.inject.Inject
 
 class WeatherDomainMapper @Inject constructor() {
 
-    fun mapTiUiModel(cityWeather1: WeatherInCity): WeatherInCityUiModel {
-        val icon = "http://openweathermap.org/img/wn/${cityWeather1.iconName}@2x.png"
-        val dateFormat = SimpleDateFormat("E\n dd", Locale.getDefault())
-        val date = Date(cityWeather1.date ?: 0L)
-        val dateStr = dateFormat.format(date)
+    fun mapToUiModel(cityWeather: WeatherInCity): WeatherInCityUiModel {
         val celsiusSign = "\u00B0"
         return WeatherInCityUiModel(
-            id = cityWeather1.id,
-            name = cityWeather1.name.orEmpty(),
-            icon = icon,
-            description = cityWeather1.description.orEmpty(),
-            date = dateStr,
-            temperature = cityWeather1.temperature.toString() + celsiusSign,
-            temperatureMin = cityWeather1.temperatureMin.toString() + celsiusSign,
-            temperatureMax = cityWeather1.temperatureMax.toString() + celsiusSign,
+            id = cityWeather.id,
+            name = cityWeather.name.orEmpty(),
+            icon = mapToWeatherIcon(cityWeather.iconName),
+            description = cityWeather.description.orEmpty(),
+            date = mapToUiDate(cityWeather.date),
+            temperature = cityWeather.temperature.toString() + celsiusSign,
+            temperatureMin = cityWeather.temperatureMin.toString() + celsiusSign,
+            temperatureMax = cityWeather.temperatureMax.toString() + celsiusSign,
         )
     }
+
+    @VisibleForTesting
+    fun mapToUiDate(date: Long?): String {
+        val dateFormat = SimpleDateFormat("E\n dd", Locale.getDefault())
+        val dateObj = Date((date ?: 0L) * 1000)
+        return dateFormat.format(dateObj)
+    }
+
+    @VisibleForTesting
+    fun mapToWeatherIcon(iconName: String?) =
+        "http://openweathermap.org/img/wn/${iconName}@2x.png"
 }
