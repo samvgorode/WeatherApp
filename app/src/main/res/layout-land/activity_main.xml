@@ -20,6 +20,14 @@
         android:layout_height="match_parent"
         tools:context=".presentation.main.MainActivity">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.showWeatherWidget ? View.VISIBLE : View.GONE}"/>
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="0dp"
@@ -28,7 +36,7 @@
             android:importantForAccessibility="no"
             android:src="@drawable/ic_logo_main"
             app:layout_constraintBottom_toTopOf="@+id/input"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -43,7 +51,7 @@
             android:background="@drawable/rectangle_round_start"
             android:hint="@string/enter_city_name"
             android:importantForAutofill="no"
-            android:inputType="textCapWords|textAutoComplete"
+            android:inputType="textAutoComplete"
             android:paddingHorizontal="8dp"
             android:text="@={viewModel.input}"
             android:textColor="@color/btn_txt_green"
@@ -62,7 +70,7 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/rectangle_round_end"
             android:onClick="@{_ -> viewModel.search()}"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toEndOf="@+id/input"
             app:layout_constraintTop_toBottomOf="@+id/input"
             app:layout_constraintTop_toTopOf="@+id/input" />
@@ -76,8 +84,8 @@
             android:paddingHorizontal="48dp"
             android:text="@string/view_history"
             android:textColor="@color/btn_txt"
-            app:layout_constraintBottom_toTopOf="@+id/cityWidget"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input"
             app:layout_constraintVertical_chainStyle="packed"
@@ -86,15 +94,15 @@
         <include
             android:id="@+id/cityWidget"
             layout="@layout/weather_widget"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="16dp"
             android:visibility="@{viewModel.showWeatherWidget ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/history"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
             app:weatherModel="@{viewModel.weatherModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
